@@ -400,18 +400,16 @@ function Shell({ selectedProject, selectedSession, isActive }) {
         const config = await configResponse.json();
         wsBaseUrl = config.wsUrl;
         
-        // If the config returns localhost but we're not on localhost, use current host but with API server port
+        // If the config returns localhost but we're not on localhost, use current host
         if (wsBaseUrl.includes('localhost') && !window.location.hostname.includes('localhost')) {
           const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-          // For development, API server is typically on port 3002 when Vite is on 3001
-          const apiPort = window.location.port === '3001' ? '3002' : window.location.port;
-          wsBaseUrl = `${protocol}//${window.location.hostname}:${apiPort}`;
+          // Use the same host and port as the current page (ngrok handles the routing)
+          wsBaseUrl = `${protocol}//${window.location.host}`;
         }
       } catch (error) {
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        // For development, API server is typically on port 3002 when Vite is on 3001
-        const apiPort = window.location.port === '3001' ? '3002' : window.location.port;
-        wsBaseUrl = `${protocol}//${window.location.hostname}:${apiPort}`;
+        // Use the same host and port as the current page (ngrok handles the routing)
+        wsBaseUrl = `${protocol}//${window.location.host}`;
       }
       
       // Include token in WebSocket URL as query parameter
