@@ -218,7 +218,7 @@ async function spawnClaude(command, options = {}, ws) {
       }
     }
     
-    console.log('Spawning Claude CLI:', 'claude', args.map(arg => {
+    console.log('Spawning Claude CLI:', '/home/linuxbrew/.linuxbrew/bin/claude', args.map(arg => {
       const cleanArg = arg.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
       return cleanArg.includes(' ') ? `"${cleanArg}"` : cleanArg;
     }).join(' '));
@@ -227,7 +227,7 @@ async function spawnClaude(command, options = {}, ws) {
     console.log('🔍 Full command args:', JSON.stringify(args, null, 2));
     console.log('🔍 Final Claude command will be: claude ' + args.join(' '));
     
-    const claudeProcess = spawn('claude', args, {
+    const claudeProcess = spawn('/home/linuxbrew/.linuxbrew/bin/claude', args, {
       cwd: workingDir,
       stdio: ['pipe', 'pipe', 'pipe'],
       env: { ...process.env } // Inherit all environment variables

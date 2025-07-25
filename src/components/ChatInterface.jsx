@@ -371,8 +371,8 @@ const MessageComponent = memo(({ message, index, prevMessage, createDiff, onFile
                     }
                   }
                   
-                  // Special handling for zsh tool
-                  if (message.toolName === 'zsh') {
+                  // Special handling for 'bash' tool
+                  if (message.toolName === 'bash') {
                     try {
                       const input = JSON.parse(message.toolInput);
                       return (
@@ -579,7 +579,7 @@ const MessageComponent = memo(({ message, index, prevMessage, createDiff, onFile
                         }
 
                         // Special handling for interactive prompts
-                        if (content.includes('Do you want to proceed?') && message.toolName === 'zsh') {
+                        if (content.includes('Do you want to proceed?') && message.toolName === 'bash') {
                           const lines = content.split('\n');
                           const promptIndex = lines.findIndex(line => line.includes('Do you want to proceed?'));
                           const beforePrompt = lines.slice(0, promptIndex).join('\n');

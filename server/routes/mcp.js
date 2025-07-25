@@ -21,7 +21,7 @@ router.get('/cli/list', async (req, res) => {
     const { promisify } = await import('util');
     const exec = promisify(spawn);
     
-    const process = spawn('claude', ['mcp', 'list', '-s', 'user'], {
+    const process = spawn('/home/linuxbrew/.linuxbrew/bin/claude', ['mcp', 'list', '-s', 'user'], {
       stdio: ['pipe', 'pipe', 'pipe']
     });
     
@@ -91,9 +91,9 @@ router.post('/cli/add', async (req, res) => {
       }
     }
     
-    console.log('🔧 Running Claude CLI command:', 'claude', cliArgs.join(' '));
+    console.log('🔧 Running Claude CLI command:', '/home/linuxbrew/.linuxbrew/bin/claude', cliArgs.join(' '));
     
-    const process = spawn('claude', cliArgs, {
+    const process = spawn('/home/linuxbrew/.linuxbrew/bin/claude', cliArgs, {
       stdio: ['pipe', 'pipe', 'pipe']
     });
     
@@ -136,7 +136,7 @@ router.delete('/cli/remove/:name', async (req, res) => {
     
     const { spawn } = await import('child_process');
     
-    const process = spawn('claude', ['mcp', 'remove', '-s', 'user', name], {
+    const process = spawn('/home/linuxbrew/.linuxbrew/bin/claude', ['mcp', 'remove', '-s', 'user', name], {
       stdio: ['pipe', 'pipe', 'pipe']
     });
     
@@ -179,7 +179,7 @@ router.get('/cli/get/:name', async (req, res) => {
     
     const { spawn } = await import('child_process');
     
-    const process = spawn('claude', ['mcp', 'get', '-s', 'user', name], {
+    const process = spawn('/home/linuxbrew/.linuxbrew/bin/claude', ['mcp', 'get', '-s', 'user', name], {
       stdio: ['pipe', 'pipe', 'pipe']
     });
     

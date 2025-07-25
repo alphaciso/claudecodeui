@@ -516,11 +516,11 @@ function handleShellConnection(ws) {
         
         try {
           // Build shell command that changes to project directory first, then runs claude
-          let claudeCommand = 'claude';
+          let claudeCommand = '/home/linuxbrew/.linuxbrew/bin/claude';
           
           if (hasSession && sessionId) {
             // Try to resume session, but with fallback to new session if it fails
-            claudeCommand = `claude --resume ${sessionId} || claude`;
+            claudeCommand = `/home/linuxbrew/.linuxbrew/bin/claude --resume ${sessionId} || claude`;
           }
           
           // Create shell command that cds to the project directory first
@@ -529,7 +529,7 @@ function handleShellConnection(ws) {
           console.log('🔧 Executing shell command:', shellCommand);
           
           // Start shell using PTY for proper terminal emulation
-          shellProcess = pty.spawn('zsh', ['-c', shellCommand], {
+          shellProcess = pty.spawn('bash', ['-c', shellCommand], {
             name: 'xterm-256color',
             cols: 80,
             rows: 24,
