@@ -529,7 +529,7 @@ function handleShellConnection(ws) {
           console.log('🔧 Executing shell command:', shellCommand);
           
           // Start shell using PTY for proper terminal emulation
-          shellProcess = pty.spawn('bash', ['-c', shellCommand], {
+          shellProcess = pty.spawn('zsh', ['-c', shellCommand], {
             name: 'xterm-256color',
             cols: 80,
             rows: 24,
