@@ -1,0 +1,19 @@
+[Unit]
+Description=Claude Code UI Server
+After=network.target
+
+[Service]
+Type=simple
+User=ishan
+WorkingDirectory=/home/ishan/Projects/claudecodeui
+ExecStart=pnpm start
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=claudecodeui
+Environment="NODE_ENV=production"
+Environment="PATH=/usr/bin:/usr/local/bin"
+
+[Install]
+WantedBy=multi-user.target
