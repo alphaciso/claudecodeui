@@ -2,7 +2,10 @@
 nixPkgs = ["nodejs", "pnpm", "python3", "gcc", "gnumake", "glibc.dev"]
 
 [phases.install]
-cmds = ["pnpm install --frozen-lockfile"]
+cmds = [
+    "pnpm install --frozen-lockfile",
+    "pnpm rebuild"
+]
 
 [phases.build]
 cmds = ["pnpm run build"]
