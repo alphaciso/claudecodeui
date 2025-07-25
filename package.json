@@ -10,7 +10,7 @@
     "client": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run build && npm run server"
+    "start": "pnpm run build && pnpm run server"
   },
   "keywords": [
     "claude",
