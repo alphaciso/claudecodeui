@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs", "pnpm", "python3", "gcc", "gnumake", "libc.dev"]
+nixPkgs = ["nodejs", "pnpm", "python3", "gcc", "gnumake", "glibc.dev"]
 
 [phases.install]
 cmds = ["pnpm install --frozen-lockfile"]
